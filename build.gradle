@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://maven.eveoh.nl/content/repositories/releases"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}",
+                "nl.eveoh:gradle-aspectj:2.0"
+    }
+}
+
+project.ext {
+    aspectjVersion = '1.8.4'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'aspectj'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    aspectpath "org.springframework:spring-aspects"
+
+    compile 'org.springframework.boot:spring-boot-starter',
+            'org.springframework:spring-aspects'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
